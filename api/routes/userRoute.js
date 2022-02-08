@@ -4,4 +4,4 @@ var userList = require("../controllers/userController.js");
 
 router.get('/api/createuser', userList.createUser);
 
-module.exports = router;
+module.exports = router; 

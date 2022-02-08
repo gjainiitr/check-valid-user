@@ -1,14 +1,21 @@
 var mongoose = require('mongoose');
 var User = require('../models/userModel');
 
-exports.createUser = function(req, res) {
-    console.log(req.body);
-    res.send("Hello");
-    // Hotel.find(function(err, hotels) {
-    //     if (err) {
-    //         res.send(err);
-    //     }
-    //     res.json(hotels);
-    // });
-    // console.log(req.body);
+exports.createUser = async function(req, res) {
+    // var x = await User.findOne({});
+    // console.log(x);
+    const currUser = new User(req.query);
+    const isFound = await User.find({
+        $or: [
+            { email: currUser.email },
+            { username: currUser.username },
+            {phoneno: currUser.phoneno}
+        ]
+    });
+    if (isFound.length > 0) {
+        res.send('User already exists');
+        return;
+    }
+    await currUser.save();
+    res.send("User created successfully");
 }
