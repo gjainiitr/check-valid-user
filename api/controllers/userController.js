@@ -13,9 +13,9 @@ exports.createUser = async function(req, res) {
         ]
     });
     if (isFound.length > 0) {
-        res.send('User already exists');
+        res.send('user already exists');
         return;
     }
     await currUser.save();
-    res.send("User created successfully");
+    res.send("registration successful");
 }

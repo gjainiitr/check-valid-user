@@ -8,7 +8,6 @@ const routes = require('./api/routes/userRoute');
 const mongoose = require('mongoose');
 
 const url = 'mongodb://localhost:27017/UserBase';
-//const url = 'mongodb+srv://govindjain:8ZX56C7tnPb783y@cluster0.spjhx.mongodb.net/MoodMe?retryWrites=true&w=majority'
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
